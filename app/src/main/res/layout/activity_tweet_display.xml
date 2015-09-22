@@ -8,39 +8,25 @@
         android:id="@+id/oldTweetsTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="My old tweets" />
+        android:text="Old tweets" />
 
     <ListView
         android:id="@+id/oldTweetsList"
         android:layout_width="fill_parent"
         android:layout_height="263dp"
         android:layout_weight="1"
-        android:scrollbars="vertical" >
+        android:scrollbars="vertical"
+        android:layout_below="@+id/oldTweetsTitle"
+        android:layout_alignParentStart="true">
 
     </ListView>
 
-    <TextView
-        android:id="@+id/hello"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Blake said:" />
-    
     <EditText
         android:id="@+id/body"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="horizontal" />
-
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/clear" />
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save" />
+        android:scrollbars="horizontal"
+        android:layout_alignBottom="@+id/oldTweetsTitle"
+        android:layout_alignParentEnd="true" />
 
 </LinearLayout>
