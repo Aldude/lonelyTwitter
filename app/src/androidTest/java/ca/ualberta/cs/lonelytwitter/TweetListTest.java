@@ -22,13 +22,13 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
     public void testDoubleAdd() {
         TweetList list = new TweetList();
         Tweet tweet = new NormalTweet("Test");
-        Boolean exceptionCaught = new Boolean("FALSE");
+        Boolean exceptionCaught = Boolean.FALSE;
         list.addTweet(tweet);
 
         try {
             list.addTweet(tweet);
         } catch (IllegalArgumentException e) {
-            exceptionCaught = TRUE;
+            exceptionCaught = Boolean.TRUE;
         } catch (Exception e) {
 
         }
@@ -57,14 +57,14 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         TweetList list = new TweetList();
         Tweet tweet = new NormalTweet("Older");
         Tweet tweet2 = new NormalTweet("Newer");
-        boolean inOrder = new boolean[TRUE);
+        Boolean inOrder = Boolean.TRUE;
 
-        List<Tweet> orderedTweets = TweetList.getTweets();
+        List<Tweet> orderedTweets = list.getTweets();
         ListIterator<Tweet> it = orderedTweets.listIterator(1); // Gets the second tweet
 
         while(it.hasNext()) {
             if(it.previous().getDate().after(orderedTweets.get(it.previousIndex() + 1).getDate())) {
-                inOrder = FALSE;
+                inOrder = Boolean.FALSE;
                 break;
             }
         }

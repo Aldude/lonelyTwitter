@@ -30,6 +30,6 @@ public class TweetList {
     }
 
     public List<Tweet> getTweets() {
-
+        return tweets;
     }
 }
