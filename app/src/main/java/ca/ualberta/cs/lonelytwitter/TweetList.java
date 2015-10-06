@@ -1,35 +1,42 @@
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Observer;
 
 /**
- * Created by sakaluk on 9/28/15.
+ * Created by joshua2 on 9/28/15.
  */
-public class TweetList {
+public class TweetList implements MyObservable, MyObserver {
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+    private volatile ArrayList<MyObserver> observers
+            = new ArrayList<MyObserver>();
 
-    public void addTweet(Tweet tweet) {
-        if(this.hasTweet(tweet)) {
-            throw new IllegalArgumentException("Tweet already exists");
+    private void notifyAllObservers() {
+        for (MyObserver observer : observers) {
+            observer.myNotify(this);
         }
-
-        tweets.add(tweet);
     }
 
-    public void removeTweet(Tweet tweet) {
+    public void add(Tweet tweet) {
+        tweets.add(tweet);
+        tweet.addObserver(this);
+        notifyAllObservers();
+    }
+
+    public void delete(Tweet tweet) {
         tweets.remove(tweet);
     }
 
-    public boolean hasTweet(Tweet tweet) {
+    public Boolean contains(Tweet tweet) {
         return tweets.contains(tweet);
     }
 
-    public int getCount() {
-        return tweets.size();
+    public void addObserver(MyObserver observer) {
+        observers.add(observer);
     }
 
-    public List<Tweet> getTweets() {
-        return tweets;
+    public void myNotify(MyObservable observable) {
+        notifyAllObservers();
     }
+
 }
